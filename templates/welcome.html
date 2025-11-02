@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome Flame</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="welcome-page">
+    <div class="welcome-container">
+        <h1>🔥 Welcome back, {{ email }} 🔥</h1>
+        {% if next_user %}
+            <p>After your spark lit the system, the next soul to log in was <strong>{{ next_user.username }}</strong><br>
+            at <em>{{ next_user.last_login }}</em>. The chain continues…</p>
+        {% else %}
+            <p>Your spark lit the system, and no one has followed yet.<br>
+            You’re the latest flame. Keep it burning.</p>
+        {% endif %}
+        <a href="{{ url_for('login') }}" class="back-link">Return to Login</a>
+    </div>
+</body>
+</html>

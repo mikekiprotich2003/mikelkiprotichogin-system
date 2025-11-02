@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="login-box glass-box">
+        <h2>Login</h2>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul>
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+        <form method="post">
+            <label>Email:</label>
+            <input type="email" name="email" required><br><br>
+            <label>Password:</label>
+            <input type="password" name="password" required><br><br>
+            <button type="submit">Login</button>
+        </form>
+        <p><a href="{{ url_for('signup') }}">Sign up</a> | <a href="{{ url_for('forgot_password') }}">Forgot Password?</a></p>
+    </div>
+</body>
+</html>
